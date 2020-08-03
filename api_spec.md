@@ -6,15 +6,15 @@
 
 ## 1. API 기본 정보
 
-   메써드          인증      요청 URL   출력 포맷    
+  | 메써드  |        인증  |    요청 URL |  출력 포맷  |  
  ------------  -----------  --------------  ------------------------------------ 
-   GET    &nbsp;    -  http127.0.0.15000keyword_resultkeyword={keyword}&operator={operator}&start={start}&end={end}  HTML      
-   GET    &nbsp; &nbsp;    -  http127.0.0.15000writer_resultwriter={writer}&operator={operator}&start={start}&end={end}  HTML    
+  | GET    &nbsp; |   -  | http127.0.0.15000keyword_resultkeyword={keyword}&operator={operator}&start={start}&end={end} | HTML |     
+  | GET    &nbsp; &nbsp; |    - |   http127.0.0.15000writer_resultwriter={writer}&operator={operator}&start={start}&end={end} | HTML |   
 
 
 ## 2. 요청 변수 (request parameter) - 기사검색
 
- 요청변수   타입   필수 여부   기본값  설명 
+ 요청변수 |   타입  | 필수 여부   기본값  설명 
  ----------  ---------  --------------  --------  --------- 
  keyword  string  Y    검색하고자 하는 키워드를 받습니다. 제목  본문 순으로 검색 결과를 도출합니다 
  operator  string  N  정확도순  정확도순과 최신순으로 결과 값들을 정렬합니다. 
@@ -48,7 +48,7 @@
 
 ## 4. 요청 예시
 
-   메써드          요청 예시      
+ |  메써드    |      요청 예시   |   
  ------------  -----------  
-   GET    &nbsp;    http127.0.0.15000keyword_resultkeyword=%EC%98%81%ED%99%94%EA%B0%90%EB%8F%85&operator=%EC%A0%95%ED%99%95%EB%8F%84%EC%88%9C&start=20160729&end=20200729  
-   GET    &nbsp; &nbsp;    http127.0.0.15000writer_resultwriter=%EB%B0%95%EB%8C%80%EA%B8%B0+%EA%B8%B0%EC%9E%90&operator=%EC%A0%95%ED%99%95%EB%8F%84%EC%88%9C&start=&end=  
+ |  GET  |  &nbsp;    http127.0.0.15000keyword_resultkeyword=%EC%98%81%ED%99%94%EA%B0%90%EB%8F%85&operator=%EC%A0%95%ED%99%95%EB%8F%84%EC%88%9C&start=20160729&end=20200729  |
+ |  GET  |  &nbsp; &nbsp;    http127.0.0.15000writer_resultwriter=%EB%B0%95%EB%8C%80%EA%B8%B0+%EA%B8%B0%EC%9E%90&operator=%EC%A0%95%ED%99%95%EB%8F%84%EC%88%9C&start=&end=  |
