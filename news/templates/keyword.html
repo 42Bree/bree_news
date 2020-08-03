@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+    <head>
+        <meta charset="UTF-8">
+        <title>뉴스 검색</title>
+        <script type="text/javascript">
+            var bDisplay = true;
+            function doDisplay(){
+                var con = document.getElementById("bree");
+                if(con.style.display == 'none'){
+                    con.style.display = 'block';
+                }
+                else{
+                    con.style.display = 'none';
+                }
+            }
+        </script>
+        <style>
+            #options li,ul {
+                list-style:none;
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+            }
+            #bree select[multiple]{
+                height:120px;
+            }
+            #bree select[multiple]::-webkit-scrollbar{
+                display:none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <header>
+                <div>
+                    <h1>Bree 뉴스 검색</h1>
+                </div>
+            </header>
+
+            <section>
+                <div>
+                        <h2>Search</h2><hr>
+                        <form action="/keyword_result">
+                            <p>
+                                <label>Keyword</label>
+                                <input type="text" name="keyword" value="" placeholder="Type your search term here" maxlength="90%">
+                            </p>
+                            <div id="options">
+                                <select title="검색 조건" id="operator" name="operator" class="sel" style="width:80px">
+                                    <option value="정확도순">정확도순</option>
+                                    <option value="최신순">최신순</option>
+                                </select>
+                            </div>
+                            <p></p>
+                            <div id="bree" style="display:none; -ms-overflow-style:none;">
+                                <label>기간 설정</label>
+                                <p></p>
+                                <div>
+                                    <label>start date</label>
+                                    <input type="text" name="start" value="" placeholder="ex): 20160729" maxlength="50%">
+                                    <label>end date</label>
+                                    <input type="text" name="end" value="" placeholder="ex) 20200729" maxlength="50%">
+                                </div>
+                            </div>
+                            <a href="javascript:doDisplay();">기간 설정 (Optional)</a>
+                            <p></p>
+                            <div class="btn_box">
+                                <input id="btnPhonemeRetrieve" type="submit" class="btn_blue" value="search">
+                            </div>
+                        </form>
+                </div>
+            </section>
+            <footer>
+                <div></div>
+            </footer>
+        </main>
+    </body>
+</html>
