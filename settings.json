@@ -1,0 +1,130 @@
+{
+  "settings": {
+    "index" :{
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "analysis":{
+        "tokenizer":{
+          "korean_nori_tokenizer":{
+          "type":"nori_tokenizer",
+          "decompound_mode":"mixed"
+          }
+        },
+        
+        "analyzer":{
+          "nori_analyzer": {
+            "type":"custom",
+            "tokenizer":"korean_nori_tokenizer",
+            "filter": [
+              "nori_posfilter",
+              "nori_readingform"
+            ]
+          },
+          "nori_analyzer_writer": {
+            "type":"custom",
+            "tokenizer":"korean_nori_tokenizer",
+            "filter": [
+              "nori_posfilter",
+              "nori_readingform",
+              "my_custom_stop_words_filter"
+            ]
+          },
+          "nori_analyzer_without": {
+            "type":"custom",
+            "tokenizer":"korean_nori_tokenizer",
+            "filter": [
+              "nori_readingform"
+            ]
+          }
+        },
+        "filter": {
+          "nori_posfilter":{
+            "type":"nori_part_of_speech",
+            "stoptags": [
+              "E","IC","J","MAG","MM","NA","NR","SC",
+              "SE","SF","SH","SL","SN","SP","SSC","SSO",
+              "SY","UNA","UNKNOWN","VA","VCN","VCP","VSV",
+              "VV","VX","XPN","XR","XSA","XSN","XSV"
+            ]
+          },
+          "my_custom_stop_words_filter": {
+            "type": "stop",
+            "ignore_case": true,
+            "stopwords": ["기자"]
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "url": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+          }
+        }
+      },
+      "title": {
+        "type": "text", 
+        "analyzer": "nori_analyzer",
+        "fields": {
+            "raw": { 
+              "type":  "text"
+            },
+            "raw_analyze": {
+              "type": "text",
+               "analyzer": "nori_analyzer_without"
+            }
+        }
+      },
+      "category": {
+        "type": "keyword"
+      },
+      "cpname": {
+        "type": "keyword"
+      },
+      "regdate": {
+        "type": "date",
+        "ignore_malformed": true,
+        "format" : "basic_date"
+      },
+      "moddate": {
+        "type": "date",
+        "ignore_malformed": true,
+        "format" : "basic_date"
+      },
+      "writer": {
+        "type": "text",
+        "analyzer": "nori_analyzer_writer"
+      },
+      "images": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "body" : {
+        "type": "text",
+        "analyzer": "nori_analyzer",
+        "fields": {
+            "raw": { 
+              "type":  "text"
+            },
+            "raw_analyze": {
+              "type": "text",
+               "analyzer": "nori_analyzer_without"
+            }
+        }
+      }
+    }
+  }
+}
